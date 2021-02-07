@@ -1,0 +1,32 @@
+char buffer1[10];
+     char buffer2[10];
+    BPM = dtostrf(myBPM, 4, 1, buffer1);
+    temp = dtostrf(myTemp, 4, 1, buffer2);
+  }
+  void updateInfo()
+{
+  String cmd = "AT+CIPSTART=\"TCP\",\"";
+  cmd += IP;
+  cmd += "\",80";
+  Serial.println(cmd);
+  esp8266.println(cmd);
+  delay(2000);
+  if(esp8266.find("Error"))
+  {
+    return;
+  }
+ cmd = msg ;
+  cmd += "&field1=";    //field 1 for BPM
+  cmd += BPM;
+  cmd += "&field2=";  //field 2 for temperature
+  cmd += temp;
+  cmd += "\r\n";
+  Serial.print("AT+CIPSEND=");
+  esp8266.print("AT+CIPSEND=");
+  Serial.println(cmd.length());
+  esp8266.println(cmd.length());
+  if(esp8266.find(">"))
+  {
+    Serial.print(cmd);
+    esp8266.print(cmd);
+  }
