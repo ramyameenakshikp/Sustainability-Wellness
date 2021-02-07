@@ -1,0 +1,17 @@
+void panic_button(){
+  panic = digitalRead(8);
+    if(panic == HIGH){
+    Serial.println(panic);
+      String cmd = "AT+CIPSTART=\"TCP\",\"";
+  cmd += IP;
+  cmd += "\",80";
+  Serial.println(cmd);
+  esp8266.println(cmd);
+ cmd = msg ;
+  cmd += "&field3=";   
+  void loop()
+{
+  panic_button();
+start: //label
+    error=0;
+    t.update(); 
